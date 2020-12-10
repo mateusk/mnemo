@@ -4,6 +4,7 @@ class User {
         this.age = age,
         this.memories = []
     }
+    
     /**
      * @param {Memory} memory The memory to be added to the user's memory array.
      */
