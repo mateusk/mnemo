@@ -3,6 +3,17 @@ class User {
         this.name = name,
         this.age = age,
         this.memories = []
+    /**
+     * Creates a new User object.
+     * @typedef {Object} User
+     * @param {string} username - The user's name.
+     * @param {string} email - The user's e-mail.
+     */
+    constructor(username, email){
+        this.username = username,
+        this.email = email,
+        this.memories = [],
+        this.favoriteMemories = []
     }
     
     /**
