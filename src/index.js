@@ -21,6 +21,15 @@ class User {
      */
     addMemory(memory){
         this.memories.push(memory);
+        this.memories.push(memory)
+    }
+
+    /**
+     * @param {Memory} memory The memory to be added to the user's favorite memories array.
+     */
+    favoriteMemory(memory){
+        this.favoriteMemories.push(memory)
+        memory.addFavoriteCount()
     }
 }
 
