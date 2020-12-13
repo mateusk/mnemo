@@ -48,6 +48,7 @@ class Memory {
         this.favoriteCount = 0
     }
 }
+
     /**
      * Sums 1 to the Memory favorite count
      * @function 
@@ -56,3 +57,15 @@ class Memory {
         this.favoriteCount++
     }
 }
+
+/** 
+* Testing classes: 
+*/
+const userA = new User('Mateus', 'me@mateus.com')
+const memUserA = new Memory('Once upon a time...', 'Berlin')
+userA.addMemory(memUserA)
+console.log(userA.memories)
+
+const userB = new User('Paloma', 'p@paloma.com')
+userB.favoriteMemory(memUserA)
+console.log(userA.memories.find(item => item === memUserA).favoriteCount)
