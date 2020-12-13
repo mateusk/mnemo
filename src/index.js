@@ -35,6 +35,7 @@ class User {
 
 class Memory {
     /**
+     * Creates a new Memory object.
      * @typedef {Object} Memory
      * @param {string} text The memory text content.
      * @param {string} place The place that relates to the memory.
@@ -42,5 +43,16 @@ class Memory {
     constructor(text, place){
         this.text = text
         this.place = place
+        this.text = text,
+        this.place = place,
+        this.favoriteCount = 0
+    }
+}
+    /**
+     * Sums 1 to the Memory favorite count
+     * @function 
+     */
+    addFavoriteCount(){
+        this.favoriteCount++
     }
 }
