@@ -1,8 +1,4 @@
 class User {
-    constructor(name, age){
-        this.name = name,
-        this.age = age,
-        this.memories = []
     /**
      * Creates a new User object.
      * @typedef {Object} User
@@ -20,7 +16,6 @@ class User {
      * @param {Memory} memory The memory to be added to the user's memory array.
      */
     addMemory(memory){
-        this.memories.push(memory);
         this.memories.push(memory)
     }
 
@@ -41,13 +36,10 @@ class Memory {
      * @param {string} place The place that relates to the memory.
      */
     constructor(text, place){
-        this.text = text
-        this.place = place
         this.text = text,
         this.place = place,
         this.favoriteCount = 0
     }
-}
 
     /**
      * Sums 1 to the Memory favorite count
