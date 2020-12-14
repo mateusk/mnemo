@@ -1,10 +1,5 @@
 class User {
-    /**
-     * Creates a new User object.
-     * @typedef {Object} User
-     * @param {string} username - The user's name.
-     * @param {string} email - The user's e-mail.
-     */
+   
     constructor(username, email){
         this.username = username,
         this.email = email,
@@ -12,16 +7,10 @@ class User {
         this.favoriteMemories = []
     }
     
-    /**
-     * @param {Memory} memory The memory to be added to the user's memory array.
-     */
     addMemory(memory){
         this.memories.push(memory)
     }
 
-    /**
-     * @param {Memory} memory The memory to be added to the user's favorite memories array.
-     */
     favoriteMemory(memory){
         this.favoriteMemories.push(memory)
         memory.addFavoriteCount()
@@ -29,22 +18,12 @@ class User {
 }
 
 class Memory {
-    /**
-     * Creates a new Memory object.
-     * @typedef {Object} Memory
-     * @param {string} text The memory text content.
-     * @param {string} place The place that relates to the memory.
-     */
     constructor(text, place){
         this.text = text,
         this.place = place,
         this.favoriteCount = 0
     }
 
-    /**
-     * Sums 1 to the Memory favorite count
-     * @function 
-     */
     addFavoriteCount(){
         this.favoriteCount++
     }
