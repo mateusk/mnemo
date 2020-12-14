@@ -1,9 +1,9 @@
 class User {
    
     constructor(username, email){
-        this.username = username,
-        this.email = email,
-        this.memories = [],
+        this.username = username
+        this.email = email
+        this.memories = []
         this.favoriteMemories = []
     }
     
@@ -19,8 +19,8 @@ class User {
 
 class Memory {
     constructor(text, place){
-        this.text = text,
-        this.place = place,
+        this.text = text
+        this.place = place
         this.favoriteCount = 0
     }
 
