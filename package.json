@@ -1,6 +1,6 @@
 {
   "name": "mnemo",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Repository of the Mnemo web app",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/mateusk/mnemo.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mateus Knelsen <hello@mateus.works>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mateusk/mnemo/issues"
