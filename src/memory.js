@@ -1,13 +1,13 @@
 class Memory {
-    constructor(text, place){
-        this.text = text
-        this.place = place
-        this.favoriteCount = 0
-    }
+  constructor(text, place) {
+    this.text = text
+    this.place = place
+    this.favoriteCount = 0
+  }
 
-    addFavoriteCount(){
-        this.favoriteCount++
-    }
+  addFavoriteCount() {
+    this.favoriteCount += 1
+  }
 }
 
-module.exports = Memory;
+module.exports = Memory
