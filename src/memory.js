@@ -1,7 +1,6 @@
 class Memory {
-  constructor(text, place) {
+  constructor(text) {
     this.text = text
-    this.place = place
     this.favoriteCount = 0
   }
 
