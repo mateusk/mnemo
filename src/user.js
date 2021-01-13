@@ -7,6 +7,16 @@ class User {
     this.favoritePlaces = []
   }
 
+  get profile() {
+    return {
+      username: this.username,
+      email: this.email,
+      memories: this.memories,
+      favoriteMemories: this.favoriteMemories,
+      favoritePlaces: this.favoritePlaces,
+    }
+  }
+
   createMemory(memory) {
     this.memories.push(memory)
     memory.place.addMemory(memory)
