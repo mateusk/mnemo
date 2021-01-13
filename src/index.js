@@ -3,13 +3,16 @@ const Memory = require('./memory')
 const Place = require('./place')
 
 const mateus = new User('Mateus', 'me@mateus.com')
-console.log(mateus.memories)
-console.log(berlin)
 const berlin = new Place('Berlin', { latitude: 1, longitude: 1 })
 const mateusMemory = new Memory('A nice day', 'Once upon a time...', berlin)
 
 mateus.createMemory(mateusMemory)
+
 const paloma = new User('Paloma', 'p@paloma.com')
 paloma.favoriteMemory(mateusMemory)
 paloma.favoritePlace(berlin)
-mateus.memories.forEach(item => console.log(`memory: ${item.text}, favorites: ${item.favoriteCount}`))
+
+console.log(mateus.profile)
+console.log(berlin)
+console.log(mateusMemory)
+
