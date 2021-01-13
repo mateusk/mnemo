@@ -4,10 +4,15 @@ class Memory {
     this.text = text
     this.place = place
     this.favoriteCount = 0
+    this.linkedMemories = []
   }
 
   addFavoriteCount() {
     this.favoriteCount += 1
+  }
+
+  addMemoryLink(memory) {
+    this.linkedMemories.push(memory)
   }
 }
 
