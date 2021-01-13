@@ -3,11 +3,11 @@ const Memory = require('./memory')
 const Place = require('./place')
 
 const mateus = new User('Mateus', 'me@mateus.com')
-const mateusMemory = new Memory('Once upon a time...')
 mateus.addMemory(mateusMemory, berlin)
 console.log(mateus.memories)
 console.log(berlin)
 const berlin = new Place('Berlin', { latitude: 1, longitude: 1 })
+const mateusMemory = new Memory('A nice day', 'Once upon a time...', berlin)
 
 const paloma = new User('Paloma', 'p@paloma.com')
 paloma.favoriteMemory(mateusMemory)
