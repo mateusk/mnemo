@@ -1,3 +1,5 @@
+const express = require('express')
+
 const User = require('./user')
 const Memory = require('./memory')
 const Place = require('./place')
@@ -16,3 +18,5 @@ console.log(mateus.profile)
 console.log(berlin)
 console.log(mateusMemory)
 
+const app = express()
+app.listen(8081)
