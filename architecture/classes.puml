@@ -1,0 +1,43 @@
+@startuml Class Diagram
+
+class Memory {
+  title: string
+  text: string
+  place: Place
+  favoriteCount: number
+  linkedMemories: [Memory]
+
+  addFavoriteCount()
+  addMemoryLink(memory: Memory)
+}
+
+class Place {
+  name: String
+  latitude: Number
+  longitude: Number
+  memories: [Memory]
+  favoriteCount: Number
+
+  addFavoriteCount()
+  addMemory(memory: Memory)
+}
+
+class User {
+  username: String
+  email: String
+  memories: [Memory]
+  favoriteMemories: [Memory]
+  favoritePlaces: [Place]
+
+  <<get>> profile
+  addMemory(memory: Memory)
+  favoriteMemory(memory: Memory)
+  favoritePlace(place: Place)
+}
+
+Place ---> Memory : contains
+Memory ---> Place : is associated to
+User ---> Memory : keeps, favorites
+User ---> Place : favorites
+
+@enduml
