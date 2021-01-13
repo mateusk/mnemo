@@ -7,9 +7,9 @@ class User {
     this.favoritePlaces = []
   }
 
-  addMemory(memory, place) {
+  createMemory(memory) {
     this.memories.push(memory)
-    place.addMemory(memory)
+    memory.place.addMemory(memory)
   }
 
   favoriteMemory(memory) {
