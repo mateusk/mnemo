@@ -37,7 +37,7 @@ class User {
 
 Place ---> Memory : contains
 Memory ---> Place : is associated to
-User ---> Memory : keeps, favorites
-User ---> Place : favorites
+User ---> Memory : keeps, searches, favorites
+User ---> Place : searches, favorites
 
 @enduml
