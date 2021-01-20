@@ -1,0 +1,30 @@
+@startuml Memory search activity diagram
+start
+repeat
+:Map or Memory Feed;
+note right
+  Search can be performed
+  in either views.
+end note
+repeat
+
+if(Search type) then(Current Location)
+#LightBlue:Search by current location;
+else(Places)
+#LightBlue:Search by place name, favorites;
+endif
+
+backward :No results;
+repeatwhile(Search results available?)
+#LightGreen:View with results;
+note right
+Results are displayed depending on
+user's current view (Map or Feed).
+Map view shows results as points
+in a map layer, while the Memory
+Feed shows the details of memories
+in a scrollable feed.
+end note
+repeatwhile(Switch view?)
+end
+@enduml
