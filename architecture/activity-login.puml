@@ -1,0 +1,20 @@
+@startuml Login activity diagram
+start
+if (Is logged in?) then (yes)
+else (no)
+  :Login form;
+  if (Is registered?) then (yes)
+    if(Forgot password?) then (yes)
+      :Password reset;
+    else (no)
+    endif
+  else (no)
+    repeat
+      :Sign up form;
+    repeat while (Is form correctly filled?)
+      :E-mail confirmation;
+  endif
+endif
+:Login sucessful;
+stop
+@enduml
