@@ -1,0 +1,36 @@
+@startuml Usecases
+left to right direction
+actor ContentCreator as contentCreator
+actor ContentBrowser as browser
+
+package Memory {
+  usecase "Create" as UC1
+  usecase "Edit" as UC2
+  usecase "Search" as UC3
+  usecase "Favorite" as UC4
+  usecase "Link" as UC5
+  usecase "Delete" as UC6
+}
+
+package Place {
+  usecase "Search" as UC7
+  usecase "Associate memories to" as UC8
+  usecase "Favorite" as UC9
+}
+
+contentCreator --> UC1
+contentCreator --> UC2
+contentCreator --> UC3
+contentCreator --> UC4
+contentCreator --> UC6
+contentCreator --> UC7
+contentCreator --> UC8
+contentCreator --> UC9
+
+browser ----> UC3
+browser ----> UC4
+browser ----> UC7
+browser ----> UC9
+browser ----> UC5
+
+@enduml

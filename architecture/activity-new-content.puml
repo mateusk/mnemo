@@ -1,0 +1,11 @@
+@startuml New content activity diagram
+start
+:Map;
+:My Memories;
+#LightBlue:New Memory;
+repeat
+  :New Memory Form;
+  repeat while (Are fields correct?)
+:Newly created Memory;
+end
+@enduml
