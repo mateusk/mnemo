@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= "Place search"
+  ul
+    if result.length > 0
+      each place in result
+        li
+          h3= place.name
+          p This place has #{place.memories.length} memories:
+          ul
+            li
+              each memory in place.memories
+                a(href='/mnemo?title=' + memory.title) #{memory.title}
+    else
+      p= 'No search results'
