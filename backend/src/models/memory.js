@@ -5,15 +5,12 @@ class Memory {
     this.date = date
     this.place = place
     this.favoriteCount = 0
-    this.linkedMemories = []
+
+    this.place.addMemory(this)
   }
 
   addFavoriteCount() {
     this.favoriteCount += 1
-  }
-
-  addMemoryLink(memory) {
-    this.linkedMemories.push(memory)
   }
 }
 
