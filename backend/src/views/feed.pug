@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= "Your feed"
+  ul
+  each mnemo in mnemos
+    li
+      h3
+        a(href='/mnemo?title=' + mnemo.title) #{mnemo.title}
+      p= mnemo.place
+      p= mnemo.text
+      p= mnemo.date.day + "." + mnemo.date.month + "." + mnemo.date.year
