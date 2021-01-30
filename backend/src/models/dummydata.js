@@ -1,5 +1,6 @@
 const Place = require('./place')
 const Memory = require('./memory')
+const User = require('./user')
 
 const places = [
   new Place('Berlin', { latitude: 1, longitude: 1 }),
@@ -23,4 +24,6 @@ const memories = [
   ),
 ]
 
-module.exports = { places, memories }
+const user = new User('Mateus', 'mateus@me.com')
+
+module.exports = { places, memories, user }
