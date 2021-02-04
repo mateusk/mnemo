@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  main
+    if result.length > 0
+      each memory in result
+        h3= memory.title
+        p= memory.place.name
+        p= memory.text
+        p= memory.date.day + "." + memory.date.month + "." + memory.date.year
+    else
+      p No memories were found for your search
+
+    a(href='/feed') <- Return to your feed

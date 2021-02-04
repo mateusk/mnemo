@@ -35,9 +35,8 @@ class User {
   favoritePlace(place: Place)
 }
 
-Place ---> Memory : contains
-Memory ---> Place : is associated to
-User ---> Memory : keeps, searches, favorites
-User ---> Place : searches, favorites
+Place o-- Memory : aggregates
+User *-- Memory : keeps, searches, favorites
+User ---> Place : searches, favorites, adds Memories to
 
 @enduml

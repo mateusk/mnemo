@@ -1,14 +1,14 @@
 @startuml Usecases
-left to right direction
-actor ContentCreator as contentCreator
-actor ContentBrowser as browser
+
+actor User1 as user1
+actor User2 as user2
 
 package Memory {
   usecase "Create" as UC1
   usecase "Edit" as UC2
   usecase "Search" as UC3
   usecase "Favorite" as UC4
-  usecase "Link" as UC5
+  usecase "View" as UC5
   usecase "Delete" as UC6
 }
 
@@ -16,21 +16,32 @@ package Place {
   usecase "Search" as UC7
   usecase "Associate memories to" as UC8
   usecase "Favorite" as UC9
+  usecase "View" as UC10
 }
 
-contentCreator --> UC1
-contentCreator --> UC2
-contentCreator --> UC3
-contentCreator --> UC4
-contentCreator --> UC6
-contentCreator --> UC7
-contentCreator --> UC8
-contentCreator --> UC9
+note right of (user1)
+ User 1  illustrates the "creator"
+ use case. They can create, edit
+ and delete memories, as well
+ as associate their memories to places.
+end note
 
-browser ----> UC3
-browser ----> UC4
-browser ----> UC7
-browser ----> UC9
-browser ----> UC5
+user1 --> UC1
+user1 --> UC2
+user1 --> UC6
+user1 --> UC8
+
+note left of (user2)
+ User 2 illustrates the "browser"
+ use case. They can search, view
+ and favorite places or memories.
+end note
+
+user2 ----> UC3
+user2 ----> UC4
+user2 ----> UC7
+user2 ----> UC9
+user2 ----> UC5
+user2 ----> UC10
 
 @enduml

@@ -1,18 +1,16 @@
 class Memory {
-  constructor(title, text, place) {
+  constructor(title, text, date, place) {
     this.title = title
     this.text = text
+    this.date = date
     this.place = place
     this.favoriteCount = 0
-    this.linkedMemories = []
+
+    this.place.addMemory(this)
   }
 
   addFavoriteCount() {
     this.favoriteCount += 1
-  }
-
-  addMemoryLink(memory) {
-    this.linkedMemories.push(memory)
   }
 }
 

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  main
+    h1 Your feed
+    p Mmemo search:
+    input.search(
+      type='text'
+      name='search'
+      id='searchInput'
+      placeholder='Enter a search term'
+    )
+    button(onclick='searchMnemo()') Search
+    script.
+      function searchPlace() {
+        window.open(`http://localhost:3000/mnemo?title=${document.getElementById('searchInput').value}`, '_self')
+      }
+    ul
+    each mnemo in mnemos
+      li
+        h3
+          a(href='/mnemo?title=' + mnemo.title) #{mnemo.title}
+        p= mnemo.place
+        p= mnemo.text
+        p= mnemo.date.day + "." + mnemo.date.month + "." + mnemo.date.year

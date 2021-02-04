@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  main
+    h1 Places
+    p Place search:
+    input.search(
+      type='text'
+      name='search'
+      id='searchInput'
+      placeholder='Enter a place name'
+    )
+    button(onclick='searchPlace()') Search
+    script.
+      function searchPlace() {
+        window.open(`http://localhost:3000/places?name=${document.getElementById('searchInput').value}`, '_self')
+      }
+    ul
+      if result.length > 0
+        each place in result
+          li
+            h3= place.name
+            p This place has #{place.memories.length} memories:
+            ul
+              li
+                each memory in place.memories
+                  a(href='/mnemo?title=' + memory.title) #{memory.title}
+      else
+        p No search results
