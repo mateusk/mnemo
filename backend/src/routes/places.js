@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 /* GET places by ID */
 router.get('/:placeId', (req, res) => {
   // res.send(places[req.params.placeId])
-  const result = places[req.params.placeId]
+  const result = [places[req.params.placeId]]
   res.render('places', { result })
 })
 
