@@ -3,19 +3,22 @@ extends layout
 block content
   main
     h1 Places
-    ul
-      if result.length > 0
-        each place in result
-          li
-            h3= place.name
-            p This place has #{place.memories.length} memories:
-            ul
-              li
-                each memory in place.memories
-                  a(href='/mnemo?title=' + memory.title) #{memory.title}
-      else
-        p No search results
+    section(role='search')
       form(method='get', action='/places/')
         label Place search:
         input#searchInput.search(type='text', name='name', placeholder='Enter a place name')
         button(type='submit') Search
+    section
+      ul
+        if result.length > 0
+          each place in result
+            li(style='list-style-type: none')
+              h3= place.name
+              p This place has #{place.memories.length} memories:
+              ul
+                li
+                  each memory in place.memories
+                    a(href="/mnemo/" + memory.title) #{memory.title}
+              hr
+        else
+          p No search results

@@ -7,7 +7,8 @@ block content
         h3= memory.title
         p= memory.place.name
         p= memory.text
-        p= memory.date.day + "." + memory.date.month + "." + memory.date.year
+        p
+          time(datetime=`${memory.date.year + "-" + memory.date.month + "-" + memory.date.day}`)= memory.date.day + "." + memory.date.month + "." + memory.date.year
     else
       p No memories were found for your search
 
