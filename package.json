@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/mateusk/mnemo#readme",
   "devDependencies": {
+    "@prettier/plugin-pug": "^1.13.3",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.0.0",
