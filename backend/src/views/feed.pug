@@ -3,23 +3,19 @@ extends layout
 block content
   main
     h1 Your feed
-    p Mmemo search:
-    input.search(
-      type='text'
-      name='search'
-      id='searchInput'
-      placeholder='Enter a search term'
-    )
-    button(onclick='searchMnemo()') Search
-    script.
-      function searchPlace() {
-        window.open(`http://localhost:3000/mnemo?title=${document.getElementById('searchInput').value}`, '_self')
-      }
-    ul
-    each mnemo in mnemos
-      li
-        h3
-          a(href='/mnemo?title=' + mnemo.title) #{mnemo.title}
-        p= mnemo.place
-        p= mnemo.text
-        p= mnemo.date.day + "." + mnemo.date.month + "." + mnemo.date.year
+    section(role='search')
+      p Mmemo search:
+      form(method='get', action='/mnemo/')
+        input#searchInput.search(type='text', name='title', placeholder='Enter a mnemo title')
+        button(type='submit') Search
+    section
+      ul
+      each mnemo in mnemos
+        li(style='list-style-type: none')
+          h3
+            a(href=`/mnemo/${mnemo.title}`) #{mnemo.title}
+          p= mnemo.place
+          p= mnemo.text
+          p
+            time(datetime=`${mnemo.date.year + "-" + mnemo.date.month + "-" + mnemo.date.day}`)= mnemo.date.day + "." + mnemo.date.month + "." + mnemo.date.year
+          hr

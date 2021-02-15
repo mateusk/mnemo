@@ -9,14 +9,12 @@ router.get('/', (req, res) => {
   if (req.query.name) {
     result = places.filter(place => place.name === req.query.name)
   }
-  // res.send(result)
   res.render('places', { result })
 })
 
 /* GET places by ID */
 router.get('/:placeId', (req, res) => {
-  // res.send(places[req.params.placeId])
-  const result = places[req.params.placeId]
+  const result = [places[req.params.placeId]]
   res.render('places', { result })
 })
 

@@ -6,6 +6,7 @@ const places = [
   new Place('Berlin', { latitude: 1, longitude: 1 }),
   new Place('Berlin Hauptbahnhof', { latitude: 1, longitude: 1 }),
   new Place('Hasenheide Park', { latitude: 1, longitude: 1 }),
+  new Place('Jack the Barber', { latitude: 1, longitude: 1 }),
 ]
 
 const memories = [
@@ -22,6 +23,7 @@ const memories = [
     new Date(1991, 7, 11),
     places[2]
   ),
+  new Memory('Barber', 'This barber is crazy', new Date(1991, 7, 11), places[3]),
 ]
 
 const user = new User('Mateus', 'mateus@me.com')
