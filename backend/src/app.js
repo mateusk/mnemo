@@ -4,6 +4,8 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 
+require('./database-connection')
+
 const indexRouter = require('./routes/index')
 const placesRouter = require('./routes/places')
 const feedRouter = require('./routes/feed')
