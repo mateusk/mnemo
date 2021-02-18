@@ -1,10 +1,11 @@
 const express = require('express')
-const { user } = require('../models/dummydata')
+const User = require('../models/user')
 
 const router = express.Router()
 
 /* GET home page. */
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const user = await User.find({ username: 'Mateus' })
   res.render('index', { username: user.username })
 })
 
