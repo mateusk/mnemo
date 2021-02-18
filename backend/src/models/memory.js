@@ -1,17 +1,40 @@
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
+
+const memorySchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  text: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
+  place: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Place',
+    required: true,
+  },
+  favoritedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      autopopulate: true,
+    },
+  ],
+})
+
 class Memory {
-  constructor(title, text, date, place) {
-    this.title = title
-    this.text = text
-    this.date = date
-    this.place = place
-    this.favoriteCount = 0
-
-    this.place.addMemory(this)
-  }
-
-  addFavoriteCount() {
-    this.favoriteCount += 1
+  async addFavoritedBy(user) {
+    this.favoritedBy.push(user)
+    await this.save()
   }
 }
+memorySchema.loadClass(Memory)
+memorySchema.plugin(autopopulate)
 
-module.exports = Memory
+module.exports = mongoose.model('Memory', memorySchema)
