@@ -3,4 +3,7 @@ extends layout
 block content
   main
     h1 Mnemoapp
-    h2 Hi #{username}!
+    if username
+      h2 Hi #{username}!
+    else
+      p Log in
