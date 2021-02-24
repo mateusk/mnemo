@@ -1,19 +1,51 @@
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
+
+const placeSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: {
+      type: String,
+      enum: ['Point'],
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
+  },
+  memories: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Memory',
+      autopopulate: true,
+    },
+  ],
+  favoritedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      autopopulate: true,
+    },
+  ],
+})
+
 class Place {
-  constructor(name, { latitude, longitude } = {}) {
-    this.name = name
-    this.latitude = latitude
-    this.longitude = longitude
-    this.memories = []
-    this.favoriteCount = 0
-  }
-
-  addFavoriteCount() {
-    this.favoriteCount += 1
-  }
-
-  addMemory(memory) {
+  async addMemory(memory) {
     this.memories.push(memory)
+    await this.save()
+  }
+
+  async addFavoritedBy(user) {
+    this.favoritedBy.push(user)
+    await this.save()
   }
 }
 
-module.exports = Place
+placeSchema.loadClass(Place)
+placeSchema.plugin(autopopulate)
+
+module.exports = mongoose.model('Place', placeSchema)

@@ -10,15 +10,18 @@ block content
         button(type='submit') Search
     section
       ul
-        if result.length > 0
-          each place in result
+        if places.length > 0
+          each place in places
             li(style='list-style-type: none')
               h3= place.name
-              p This place has #{place.memories.length} memories:
-              ul
-                li
-                  each memory in place.memories
-                    a(href="/mnemo/" + memory.title) #{memory.title}
+              if place.memories.length > 0
+                p This place has #{place.memories.length} memories:
+                ul
+                  li
+                    each memory in place.memories
+                      a(href="/mnemo/" + memory.title) #{memory.title}
+              else
+                p This place has no memories
               hr
         else
           p No search results

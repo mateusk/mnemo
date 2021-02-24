@@ -1,22 +1,38 @@
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
+
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  memories: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Memory',
+      autopopulate: true,
+    },
+  ],
+  favoriteMemories: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Memory',
+      autopopulate: true,
+    },
+  ],
+  favoritePlaces: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Place',
+      autopopulate: true,
+    },
+  ],
+})
 class User {
-  constructor(username, email) {
-    this.username = username
-    this.email = email
-    this.memories = []
-    this.favoriteMemories = []
-    this.favoritePlaces = []
-  }
-
-  get profile() {
-    return {
-      username: this.username,
-      email: this.email,
-      memories: this.memories,
-      favoriteMemories: this.favoriteMemories,
-      favoritePlaces: this.favoritePlaces,
-    }
-  }
-
   createMemory(memory) {
     this.memories.push(memory)
     memory.place.addMemory(memory)
@@ -29,8 +45,11 @@ class User {
 
   favoritePlace(place) {
     this.favoritePlaces.push(place)
-    place.addFavoriteCount()
+    place.addFavoritedBy(this)
   }
 }
 
-module.exports = User
+userSchema.loadClass(User)
+userSchema.plugin(autopopulate)
+
+module.exports = mongoose.model('User', userSchema)
