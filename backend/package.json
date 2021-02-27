@@ -18,6 +18,8 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.1",
     "nodemon": "^2.0.7"
   }
 }
