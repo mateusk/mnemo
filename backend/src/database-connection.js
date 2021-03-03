@@ -1,13 +1,20 @@
 const mongoose = require('mongoose')
 
-const username = process.env.MONGODB_USERNAME
-const password = process.env.MONGODB_PASSWORD
-const dbName = process.env.MONGODB_DATABASE
+const dbUsername = process.env.DB_USERNAME
+const dbPassword = process.env.DB_PASSWORD
+const dbName = process.env.DB_NAME
+const dbHost = process.env.DB_HOST
+const dbProtocol = process.env.DB_PROT
+const dbParams = process.env.DB_PARAMS
+
+let dbConnectionString = `${dbProtocol}://${dbHost}/${dbName}`
+if (dbUsername !== '')
+  dbConnectionString = `${dbProtocol}://${dbUsername}:${dbPassword}@${dbHost}/${dbName}?${dbParams}`
 
 mongoose.set('debug', true)
 
 mongoose
-  .connect(`mongodb+srv://${username}:${password}@cluster0.w10dm.mongodb.net/${dbName}?retryWrites=true&w=majority`, {
+  .connect(dbConnectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

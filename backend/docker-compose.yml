@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    image: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_USERNAME=${ENV_DB_USERNAME}
+      - DB_PASSWORD=${ENV_DB_PASSWORD}
+      - DB_HOST=${ENV_DB_HOST}
+      - DB_NAME=${ENV_DB_NAME}
+      - DB_PROT=${ENV_DB_PROT}
+      - DB_PARAMS=${ENV_DB_PARAMS}
+    ports:
+      - 3000:3000
+      - 35729:35729
+    volumes:
+      - ./src:/app/src
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
