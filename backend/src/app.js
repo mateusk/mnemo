@@ -8,11 +8,19 @@ require('./database-connection')
 
 const indexRouter = require('./routes/index')
 const placesRouter = require('./routes/places')
-const feedRouter = require('./routes/feed')
 const memoriesRouter = require('./routes/memories')
 const usersRouter = require('./routes/users')
 
 const app = express()
+
+if (app.get('env') == 'development') {
+  /* eslint-disable-next-line */
+  app.use(require('connect-livereload')())
+  /* eslint-disable-next-line */
+  require('livereload')
+    .createServer({ extraExts: ['pug'] })
+    .watch([`${__dirname}/public`, `${__dirname}/views`])
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -29,7 +37,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/places', placesRouter)
-app.use('/feed', feedRouter)
 app.use('/memories', memoriesRouter)
 app.use('/users', usersRouter)
 
