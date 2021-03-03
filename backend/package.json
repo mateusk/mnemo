@@ -14,7 +14,7 @@
     "mongoose": "^5.11.16",
     "mongoose-autopopulate": "^0.12.3",
     "morgan": "~1.9.1",
-    "pug": "^2.0.4"
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "connect-livereload": "^0.6.1",
