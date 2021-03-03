@@ -8,4 +8,6 @@ RUN npm install
 
 ADD /bin ./bin
 
-CMD [ "./node_modules/.bin/nodemon" ]
+## When running nodemon inside a Docker container,
+## you have to use Legacy watch (-L)
+CMD [ "./node_modules/.bin/nodemon", "-L" ]
