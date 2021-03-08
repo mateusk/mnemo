@@ -9,6 +9,7 @@ services:
       - DB_USERNAME=${ENV_DB_USERNAME}
       - DB_PASSWORD=${ENV_DB_PASSWORD}
       - DB_HOST=${ENV_DB_HOST}
+      - DB_PORT=${ENV_DB_PORT}
       - DB_NAME=${ENV_DB_NAME}
       - DB_PROT=${ENV_DB_PROT}
       - DB_PARAMS=${ENV_DB_PARAMS}
