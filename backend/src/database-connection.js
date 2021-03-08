@@ -1,23 +1,17 @@
 const mongoose = require('mongoose')
 
-const dbUsername = process.env.DB_USERNAME
-const dbPassword = process.env.DB_PASSWORD
-const dbName = process.env.DB_NAME
-const dbHost = process.env.DB_HOST
-const dbPort = process.env.DB_PORT
-const dbProtocol = process.env.DB_PROT
-const dbParams = process.env.DB_PARAMS
+const connectionString = process.env.DB_CONNECTION_STRING
 
-let dbConnectionString = `${dbProtocol}://${dbHost}:${dbPort}/${dbName}`
-if (dbUsername !== undefined)
-  dbConnectionString = `${dbProtocol}://${dbUsername}:${dbPassword}@${dbHost}/${dbName}?${dbParams}`
+if (connectionString === undefined || connectionString === '') throw Error('Database connection string not defined')
 
-mongoose.set('debug', true)
+mongoose.set('debug', false)
 
 mongoose
-  .connect(dbConnectionString, {
+  .connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log('connection established'))
-  .catch(console.log)
+  .then(() => console.log('Connection established'))
+  .catch(e => {
+    throw Error(e)
+  })
