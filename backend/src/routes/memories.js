@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
   const memories = await Memory.find(query)
 
-  if (memories) res.render('memories', { memories })
+  if (memories) res.send(memories)
   else res.sendStatus(404)
 })
 
@@ -38,13 +38,11 @@ router.get('/:memoryId', async (req, res) => {
   else res.sendStatus(404)
 })
 
-/* POST new memory */
+// POST new memory
 router.post('/', async (req, res) => {
-  let result = []
-  if (req.body) {
-    result = await Memory.create(req.body)
-  }
-  res.render('memories', { result })
+  const newMemory = await Memory.create(req.body)
+
+  res.send(newMemory)
 })
 
 module.exports = router

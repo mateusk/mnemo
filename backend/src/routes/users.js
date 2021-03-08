@@ -11,9 +11,7 @@ router.get('/', async (req, res) => {
 
   const users = await User.find(query)
 
-  console.log(users)
-
-  if (users) res.render('users', { users })
+  if (users) res.send(users)
   else res.sendStatus(404)
 })
 
@@ -26,10 +24,17 @@ router.get('/initialize', async (req, res) => {
 
 // GET users by ID
 router.get('/:userId', async (req, res) => {
-  console.log('userid')
   const user = await User.findById(req.params.userId)
 
   if (user) res.render('users', { user })
+  else res.sendStatus(404)
+})
+
+// POST new user
+router.post('/', async (req, res) => {
+  const newUser = await User.create(req.body)
+
+  if (newUser) res.send(newUser)
   else res.sendStatus(404)
 })
 
