@@ -17,15 +17,16 @@ router.get('/', async (req, res) => {
 
 // Initialize DB with some data:
 router.get('/initialize', async (req, res) => {
-  const place = await Place.create({ name: 'Berlin', location: { type: 'Point', coordinates: [1, 1] } })
-  if (place) res.render('places', { place })
+  const newPlace = await Place.create({ name: 'Berlin', location: { type: 'Point', coordinates: [1, 1] } })
+  if (newPlace) res.send(newPlace)
   else res.sendStatus(404)
 })
 
 // GET places by ID
 router.get('/:placeId', async (req, res) => {
   const place = await Place.findById(req.query.placeId)
-  res.render('places', { place })
+  if (place) res.send(place)
+  else res.sendStatus(404)
 })
 
 // POST new place

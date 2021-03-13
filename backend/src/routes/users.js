@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
 
 // GET
 router.get('/initialize', async (req, res) => {
-  const user = await User.create({ username: 'Mateus', email: 'mateus@me.com' })
-  if (user) res.render('users', { user })
+  const newUser = await User.create({ username: 'Mateus', email: 'mateus@me.com' })
+  if (newUser) res.send(newUser)
   else res.sendStatus(404)
 })
 
@@ -26,7 +26,7 @@ router.get('/initialize', async (req, res) => {
 router.get('/:userId', async (req, res) => {
   const user = await User.findById(req.params.userId)
 
-  if (user) res.render('users', { user })
+  if (user) res.send(user)
   else res.sendStatus(404)
 })
 

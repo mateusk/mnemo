@@ -16,15 +16,7 @@ const app = express()
 if (app.get('env') == 'development') {
   /* eslint-disable-next-line */
   app.use(require('connect-livereload')())
-  /* eslint-disable-next-line */
-  require('livereload')
-    .createServer({ extraExts: ['pug'] })
-    .watch([`${__dirname}/public`, `${__dirname}/views`])
 }
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')
 
 // adding Moment.js support
 app.locals.moment = require('moment')
@@ -51,9 +43,9 @@ app.use((err, req, res) => {
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  // render the error page
+  // handle error
   res.status(err.status || 500)
-  res.render('error')
+  res.send(500)
 })
 
 module.exports = app
