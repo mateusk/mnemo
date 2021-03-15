@@ -1,0 +1,49 @@
+version: "3"
+services:
+  frontend:
+    image: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`mnemo.localhost`)"
+      - "traefik.http.routers.frontend.entrypoints=web"
+    ports:
+      - 8080
+    volumes:
+      - ./frontend/src:/app/src
+  backend:
+    image: backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    environment:
+      - DB_CONNECTION_STRING=mongodb://mongo:27017/mnemodb
+    ports:
+      - 3000
+      - 35729:35729
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=(Host(`mnemo.localhost`) && PathPrefix(`/api`))"
+      - "traefik.http.routers.backend.entrypoints=web"
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/__tests__:/app/__tests__
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+  load-balancer:
+    image: traefik:v2.2
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      # mounting Docker socket, in read-only mode ("ro"):
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
