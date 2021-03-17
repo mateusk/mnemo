@@ -8,13 +8,13 @@ describe('Test /users endpoint', () => {
       email: 'email@me.com',
     }
 
-    const createdUser = (await request(app).post('/users').send(newUser)).body
+    const createdUser = (await request(app).post('/api/users').send(newUser)).body
     expect(createdUser.username).toBe(newUser.username)
     expect(createdUser.email).toBe(newUser.email)
   })
 
   it('GET request to /users should list users', async () => {
-    const usersList = (await request(app).get('/users')).body
+    const usersList = (await request(app).get('/api/users')).body
     expect(usersList.length > 0).toBe(true)
   })
 })

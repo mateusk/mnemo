@@ -12,7 +12,7 @@ describe('Test /memories endpoint', () => {
         coordinates: [1, 1],
       },
     }
-    const createdPlace = (await request(app).post('/places').send(newPlace)).body
+    const createdPlace = (await request(app).post('/api/places').send(newPlace)).body
 
     expect(createdPlace.name).toBe(newPlace.name)
     expect(createdPlace.location).toMatchObject(newPlace.location)
@@ -25,7 +25,7 @@ describe('Test /memories endpoint', () => {
       place: createdPlace,
     }
 
-    const createdMemory = (await request(app).post('/memories').send(newMemory)).body
+    const createdMemory = (await request(app).post('/api/memories').send(newMemory)).body
 
     expect(createdMemory.title).toBe(newMemory.title)
     expect(createdMemory.text).toBe(newMemory.text)
@@ -34,7 +34,7 @@ describe('Test /memories endpoint', () => {
   })
 
   it('GET request to /memories should list memories', async () => {
-    const memoriesList = (await request(app).get('/memories')).body
+    const memoriesList = (await request(app).get('/api/memories')).body
     expect(memoriesList.length > 0).toBe(true)
   })
 })
