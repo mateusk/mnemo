@@ -33,7 +33,7 @@ A web app that connects people, places and memories.
 
 ## About The Project
 
-![Mnemo app wireframe example](../mnemo/images/wireframe.png)
+![Mnemo app wireframe example](images/wireframe.png)
 
 Mnemo is a web application that allows users to share memories by geotagging them to places. Memories are composed of short, "Tweet-like" text snippets that can be about anything that might have existed or happened, for a moment or for a while, anywhere. Memories uploaded by users are anonymised.
 
