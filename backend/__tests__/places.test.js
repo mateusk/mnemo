@@ -11,13 +11,13 @@ describe('Test /places endpoint', () => {
       },
     }
 
-    const createdPlace = (await request(app).post('/places').send(newPlace)).body
+    const createdPlace = (await request(app).post('/api/places').send(newPlace)).body
     expect(createdPlace.name).toBe(newPlace.name)
     expect(createdPlace.location).toMatchObject(newPlace.location)
   })
 
   it('get request to /places should list places', async () => {
-    const placesList = (await request(app).get('/places')).body
+    const placesList = (await request(app).get('/api/places')).body
     expect(placesList.length > 0).toBe(true)
   })
 })
