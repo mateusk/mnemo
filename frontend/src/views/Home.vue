@@ -1,7 +1,11 @@
 <script>
+import LoggedUser from '@/components/logged-user.vue'
+
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    LoggedUser,
+  },
   data() {
     return {}
   },
@@ -9,6 +13,5 @@ export default {
 </script>
 
 <template lang="pug">
-  .home
-    p Welcome to Mnemo!
+  logged-user
 </template>

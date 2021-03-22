@@ -1,6 +1,6 @@
 <script>
-import axios from 'axios'
 import PlaceCard from '@/components/place-card.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Places',
@@ -13,13 +13,16 @@ export default {
     }
   },
   async created() {
-    const placesRequest = await axios.get('/api/places')
-    this.places = placesRequest.data
+    this.places = await this.fetchPlaces()
+  },
+  methods: {
+    ...mapActions(['fetchPlaces']),
   },
 }
 </script>
 
 <template lang="pug">
-  .places
-    place-card(v-for="place in places" :place="place")
+  div
+    .places
+      place-card(v-for="place in places" :place="place")
 </template>

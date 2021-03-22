@@ -1,6 +1,6 @@
 <script>
-import axios from 'axios'
 import UserCard from '@/components/user-card.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Users',
@@ -13,13 +13,16 @@ export default {
     }
   },
   async created() {
-    const usersRequest = await axios.get('/api/users')
-    this.users = usersRequest.data
+    this.users = await this.fetchUsers()
+  },
+  methods: {
+    ...mapActions(['fetchUsers']),
   },
 }
 </script>
 
 <template lang="pug">
-  .users
-    user-card(v-for="user in users" :user="user")
+  div
+    .users
+      user-card(v-for="user in users" :user="user")
 </template>
