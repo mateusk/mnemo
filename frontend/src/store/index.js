@@ -4,10 +4,25 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
+const mutations = {
+  SET_LOGGED_USER: 'set logged user',
+}
+
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    loggedUser: null,
+  },
+  mutations: {
+    [mutations.SET_LOGGED_USER](state, payload) {
+      state.loggedUser = payload
+    },
+  },
   actions: {
+    async setLoggedUser({ commit }, id) {
+      const user = await axios.get(`/api/users/${id}`)
+
+      commit(mutations.SET_LOGGED_USER, user.data)
+    },
     async fetchUsers() {
       const usersRequest = await axios.get('/api/users')
       return usersRequest.data
@@ -22,4 +37,11 @@ export default new Vuex.Store({
     },
   },
   modules: {},
+  // getters should only be used to compute on state variables
+  // e.g.: sort an array stored in the state
+  getters: {
+    loggedUser: state => {
+      return state.loggedUser
+    },
+  },
 })
