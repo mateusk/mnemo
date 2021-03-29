@@ -1,11 +1,16 @@
+<script>
+import NavBar from '@/components/nav-bar.vue'
+
+export default {
+  components: {
+    NavBar,
+  },
+}
+</script>
+
 <template lang="pug">
   #app
-    h1 Mnemo
-    #nav
-      router-link(to="/") Home
-      router-link(to="/users") Users
-      router-link(to="/memories") Memories
-      router-link(to="/places") Places
+    nav-bar
     router-view
 </template>
 
@@ -17,18 +22,5 @@
   text-align: left;
   padding: 50px;
   color: #2c3e50;
-}
-
-#nav {
-  padding-bottom: 50px;
-  a {
-    padding-right: 30px;
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
