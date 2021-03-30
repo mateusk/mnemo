@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template lang="pug">
-  div
+  #view
     logged-user
     .places
       place-card(v-for="place in places" :place="place")

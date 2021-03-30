@@ -1,0 +1,23 @@
+body,
+html {
+  /* For mobile first dev only: */
+  width: 375px;
+  /* width: 100vw; */
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#view {
+  flex-grow: 1;
+  width: 100%;
+  overflow: auto;
+}
+
+#view::-webkit-scrollbar {
+  display: none;
+}

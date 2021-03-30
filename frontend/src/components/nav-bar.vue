@@ -9,9 +9,6 @@ export default {
 
 <template lang="pug">
   #nav
-    #logo
-      router-link(to="/") Mnemo
-
     ul
       li
         router-link(to="/users") Users
@@ -33,11 +30,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
+  height: 75px;
+  width: 100%;
 
   ul {
     display: flex;
     list-style-type: none;
-    font-size: 20px;
+    font-size: 14px;
   }
 
   li {
@@ -51,10 +51,6 @@ export default {
 
     &.router-link-exact-active {
       color: #42b983;
-    }
-
-    &:last-child {
-      margin-right: 0px;
     }
   }
 }

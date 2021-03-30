@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template lang="pug">
-  div
+  #view
     logged-user
     .users
       user-card(v-for="user in users" :user="user")

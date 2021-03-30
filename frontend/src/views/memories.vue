@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template lang="pug">
-  div
+  #view
     logged-user
     .memories
       memory-card(v-for="memory in memories" :memory="memory")
