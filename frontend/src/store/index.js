@@ -18,10 +18,11 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async setLoggedUser({ commit }, id) {
-      const user = await axios.get(`/api/users/${id}`)
+    async setLoggedUser({ commit }, username) {
+      const user = await axios.get(`/api/users/?username=${username}`)
 
-      commit(mutations.SET_LOGGED_USER, user.data)
+      // Returning only the first user found with the username query:
+      commit(mutations.SET_LOGGED_USER, user.data[0])
     },
     async fetchUsers() {
       const usersRequest = await axios.get('/api/users')

@@ -4,7 +4,7 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'LoggedUser',
   mounted() {
-    if (this.loggedUser === null) this.setLoggedUser('604dfb7f07149e0014e44289')
+    if (this.loggedUser === null) this.setLoggedUser('Mateus')
   },
   methods: {
     ...mapActions(['setLoggedUser']),
