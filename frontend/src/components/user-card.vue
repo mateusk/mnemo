@@ -11,7 +11,7 @@ export default {
 <template lang="pug">
 .box
   h1 {{ user.username }}
-  p E-mail: {{ user.email }}
+  p {{ user.email }}
   h2 Memories ({{ user.memories.length }})
 
   .memory(v-for="memory in user.memories")
