@@ -17,7 +17,10 @@ router.get('/', async (req, res) => {
 
 // GET
 router.get('/initialize', async (req, res) => {
-  const newUser = await User.create({ username: 'Mateus', email: 'mateus@me.com' })
+  const newUser = new User({ username: 'Mateus', email: 'mateus@me.com' })
+  await newUser.setPassword('test')
+  await newUser.save()
+
   if (newUser) res.send(newUser)
   else res.sendStatus(404)
 })
@@ -26,8 +29,10 @@ router.get('/initialize', async (req, res) => {
 router.get('/:userId', async (req, res) => {
   const user = await User.findById(req.params.userId)
 
-  if (user) res.send(user)
-  else res.sendStatus(404)
+  if (user) {
+    res.send(user)
+    console.log(`user: ${user}`)
+  } else res.sendStatus(404)
 })
 
 // POST new user
