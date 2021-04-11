@@ -3,12 +3,18 @@ import App from './app.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
-import './assets/css/global.css'
+import 'normalize.css'
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+async function main() {
+  const storeInstance = await store()
+
+  new Vue({
+    router: router(storeInstance),
+    store: storeInstance,
+    render: h => h(App),
+  }).$mount('#app')
+}
+
+main()
