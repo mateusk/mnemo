@@ -1,6 +1,6 @@
 <script>
-import axios from 'axios'
 import MemoryCard from '@/components/memory-card.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Memories',
@@ -13,8 +13,10 @@ export default {
     }
   },
   async created() {
-    const memoriesRequest = await axios.get('/api/memories')
-    this.memories = memoriesRequest.data
+    this.memories = await this.fetchMemories()
+  },
+  methods: {
+    ...mapActions(['fetchMemories']),
   },
 }
 </script>

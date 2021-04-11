@@ -1,34 +1,46 @@
+<script>
+import NavBar from '@/components/nav-bar.vue'
+import TopBar from '@/components/top-bar.vue'
+import { mapActions } from 'vuex'
+
+export default {
+  name: 'App',
+  components: {
+    NavBar,
+    TopBar,
+  },
+  methods: {
+    ...mapActions(['logout']),
+    async doLogout() {
+      await this.logout()
+      this.$router.push('/login')
+    },
+  },
+}
+</script>
+
 <template lang="pug">
   #app
-    h1 Mnemo
-    #nav
-      router-link(to="/") Home
-      router-link(to="/users") Users
-      router-link(to="/memories") Memories
-      router-link(to="/places") Places
-    router-view
+    top-bar
+    #view
+      router-view
+    nav-bar
 </template>
 
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-  padding: 50px;
-  color: #2c3e50;
 }
 
-#nav {
-  padding-bottom: 50px;
-  a {
-    padding-right: 30px;
-    font-weight: bold;
-    color: #2c3e50;
+#view {
+  width: 100%;
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  height: auto;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+#view::-webkit-scrollbar {
+  display: none;
 }
 </style>

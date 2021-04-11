@@ -9,6 +9,4 @@ export default {
 </script>
 
 <template lang="pug">
-  .home
-    p Welcome to Mnemo!
 </template>

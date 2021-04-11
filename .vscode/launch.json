@@ -5,11 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "pwa-node",
-      "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/backend/bin/www"
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to backend",
+      "remoteRoot": "/app",
+      "localRoot": "${workspaceFolder}/backend",
+      "restart": true,
+      "protocol": "legacy"
     }
   ]
 }
