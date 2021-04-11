@@ -1,10 +1,12 @@
 <script>
 export default {
-  name: 'Home',
+  name: 'Feed',
   components: {},
   data() {
     return {}
   },
+  async created() {},
+  methods: {},
 }
 </script>
 

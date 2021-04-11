@@ -11,11 +11,15 @@ export default {
   #nav
     ul
       li
-        router-link(to="/users") Users
+        router-link(to="/map") Map
       li
-        router-link(to="/memories") Memories
+        router-link(to="/feed") Feed
       li
-        router-link(to="/places") Places
+        router-link(to="/memories") Mnemos
+      li
+        router-link(to="/favorites") Favorites
+      li
+        router-link(to="/settings") Settings
 </template>
 
 <style lang="scss" scoped>
@@ -27,30 +31,40 @@ export default {
 }
 
 #nav {
+  position: absolute;
+  bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  height: 75px;
+  height: 65px;
   width: 100%;
+  background-color: lightgrey;
 
   ul {
-    display: flex;
-    list-style-type: none;
-    font-size: 14px;
+    padding: 0px;
+    margin: 0;
+    list-style: none;
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
   }
 
   li {
-    padding-left: 30px;
+    width: 20%;
+    text-align: center;
+    height: 100%;
 
     a {
       font-weight: bold;
-      color: #2c3e50;
+      font-size: 14px;
+      color: dimgrey;
       text-decoration: none;
-    }
+      display: block;
+      width: 100%;
+      padding-top: 40px;
 
-    &.router-link-exact-active {
-      color: #42b983;
+      &.router-link-exact-active {
+        color: darkcyan;
+      }
     }
   }
 }

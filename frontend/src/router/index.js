@@ -4,36 +4,34 @@ import Home from '../views/home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/users',
-    name: 'Users',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "users" */ '../views/users.vue'),
-  },
-  {
-    path: '/places',
-    name: 'Places',
-    component: () => import(/* webpackChunkName: "places" */ '../views/places.vue'),
-  },
-  {
-    path: '/memories',
-    name: 'Memories',
-    component: () => import(/* webpackChunkName: "memories" */ '../views/memories.vue'),
-  },
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes,
-})
-
-export default router
+export default function init(store) {
+  return new VueRouter({
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [
+      {
+        path: '/',
+        name: 'Home',
+        component: Home,
+      },
+      {
+        path: '/map',
+        name: 'Map',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "map" */ '../views/map.vue'),
+      },
+      {
+        path: '/feed',
+        name: 'Feed',
+        component: () => import(/* webpackChunkName: "feed" */ '../views/feed.vue'),
+      },
+      {
+        path: '/memories',
+        name: 'Memories',
+        component: () => import(/* webpackChunkName: "memories" */ '../views/memories.vue'),
+      },
+    ],
+  })
+}

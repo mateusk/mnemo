@@ -1,11 +1,7 @@
 <script>
-import LoggedUser from '@/components/logged-user.vue'
-
 export default {
   name: 'Home',
-  components: {
-    LoggedUser,
-  },
+  components: {},
   data() {
     return {}
   },
@@ -13,5 +9,4 @@ export default {
 </script>
 
 <template lang="pug">
-  logged-user
 </template>
