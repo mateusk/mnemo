@@ -18,8 +18,10 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
+    env_file: var.env
     environment:
       - DB_CONNECTION_STRING=mongodb://mongo:27017/mnemodb
+
     ports:
       - 3000
       - 35729:35729
