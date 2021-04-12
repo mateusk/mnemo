@@ -8,6 +8,12 @@ export default {
   },
   computed: {
     ...mapGetters(['user']),
+    isRouteLogin() {
+      return this.$route.path === '/login'
+    },
+    isRouteRegister() {
+      return this.$route.path === '/register'
+    },
   },
   methods: {
     ...mapActions(['logout']),
@@ -23,10 +29,16 @@ export default {
   header(id="topbar")
     #logo
       router-link(to="/") Mnemo
-    #user-login(v-if="user")
-      p Hello,
-        router-link(to="/profile") {{ user.username }} &nbsp;
-        a(@click="doLogout" href="#" id="logout") Logout
+    #user-login
+      div(v-if="user")
+        p Hello,
+          router-link(to="/profile") {{ user.username }} &nbsp;
+          a(@click="doLogout" href="#" id="logout") Logout
+      div(v-else)
+        p
+          router-link(v-if="isRouteRegister" to="/login") Login
+          router-link(v-if="isRouteLogin" to="/register") Register
+
 </template>
 
 <style lang="scss" scoped>
