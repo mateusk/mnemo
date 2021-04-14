@@ -36,7 +36,7 @@ export default {
 <template lang="pug">
 .register
     form( @submit="submitLogin")
-      h1 Create a new account
+      h1 Register
       p
         label(for="username") Name:&nbsp;
           input(v-model="username" id="username" type="text" placeholder="Your username" required)
@@ -46,8 +46,12 @@ export default {
       p
         label(for="password") Password:&nbsp;
           input(v-model="password" id="password" type="password" placeholder="Your password" required)
-      input(type="submit" text="Register")
-    div(v-if="backendError") {{ backendError }}
-    div
-      p Already have an account? <router-link to="/login">Log in</router-link>
+      p
+        input(type="submit" text="Register")
+      div(v-if="backendError")
+        p {{ backendError }}
+      div
+        p Already have an account? <router-link to="/login">Log in</router-link>
 </template>
+
+<style lang="scss"></style>
