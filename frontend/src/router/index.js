@@ -14,12 +14,12 @@ export default function init(store) {
     routes: [
       {
         path: '/',
-        name: 'Home',
+        name: 'home',
         component: Home,
       },
       {
         path: '/map',
-        name: 'Map',
+        name: 'map',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
@@ -27,12 +27,12 @@ export default function init(store) {
       },
       {
         path: '/feed',
-        name: 'Feed',
+        name: 'feed',
         component: () => import(/* webpackChunkName: "feed" */ '../views/feed.vue'),
       },
       {
         path: '/memories',
-        name: 'Memories',
+        name: 'memories',
         component: () => import(/* webpackChunkName: "memories" */ '../views/memories.vue'),
       },
       {
