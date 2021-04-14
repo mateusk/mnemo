@@ -46,7 +46,7 @@ export default {
   flex-shrink: 0;
   height: 50px;
   padding: 0px 20px 0px 20px;
-  background: linear-gradient(90deg, rgb(2, 98, 122) 0%, rgba(0, 212, 255, 1) 100%);
+  background: lightgrey;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start; /* align horizontal */
