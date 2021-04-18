@@ -7,6 +7,7 @@ const session = require('express-session')
 
 const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
+const cors = require('cors')
 
 const User = require('./models/user')
 
@@ -20,10 +21,19 @@ const accountRouter = require('./routes/account')
 
 const app = express()
 
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+)
+
 if (app.get('env') == 'development') {
   /* eslint-disable-next-line */
   app.use(require('connect-livereload')())
 }
+
+app.set('trust proxy', 1)
 
 // adding Moment.js support
 app.locals.moment = require('moment')
@@ -32,6 +42,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+
 app.use(
   session({
     secret: [process.env.SESSION_SECRET_1, process.env.SESSION_SECRET_2],
@@ -39,6 +50,8 @@ app.use(
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000,
       path: '/api',
+      sameSite: process.env.NODE_EV == 'production' ? 'none' : 'strict',
+      secure: process.env.NODE_EV == 'production',
     },
   })
 )
