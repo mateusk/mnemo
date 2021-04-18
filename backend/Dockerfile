@@ -1,13 +1,14 @@
-FROM node:alpine
+FROM node:14.16.0-alpine3.11
+
+ENV NODE_ENV=production
 
 WORKDIR /app
 
 ADD package.json package-lock.json ./
 
-RUN npm install
+RUN npm install --production
 
-ADD /bin ./bin
+ADD bin ./bin
+ADD src ./src
 
-## When running nodemon inside a Docker container,
-## you have to use Legacy watch (-L)
-CMD [ "./node_modules/.bin/nodemon", "-L" ]
+CMD [ "npm", "start" ]
