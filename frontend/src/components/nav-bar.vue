@@ -15,11 +15,9 @@ export default {
       li
         router-link(to="/feed") Feed
       li
-        router-link(to="/memories") Mnemos
+        router-link(to="/memories") My Memories
       li
         router-link(to="/favorites") Favorites
-      li
-        router-link(to="/settings") Settings
 </template>
 
 <style lang="scss" scoped>
@@ -49,7 +47,7 @@ export default {
   }
 
   li {
-    width: 20%;
+    width: 25%;
     text-align: center;
     height: 100%;
 
