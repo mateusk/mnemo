@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
 const cors = require('cors')
 const helmet = require('helmet')
+const mongoSanitize = require('express-mongo-sanitize')
 
 const User = require('./models/user')
 
@@ -44,6 +45,9 @@ app.locals.moment = require('moment')
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+app.use(mongoSanitize({ replaceWith: '_' }))
+
 app.use(cookieParser())
 
 app.use(
