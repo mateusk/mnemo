@@ -9,7 +9,7 @@ export default {
   },
   data() {
     return {
-      accessToken: 'pk.eyJ1IjoibWtuZWxzZW4iLCJhIjoiY2tteGt0cnl0MHB2ejJ2bTlzb3pjNmg2diJ9.xu0EfOsaCwAXyo9FldXVlg',
+      accessToken: process.env.VUE_APP_MAPBOX_KEY,
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
       center: [13.4, 52.5],
       zoom: 12,
