@@ -53,7 +53,7 @@ app.use(cookieParser())
 
 app.use(
   session({
-    secret: [process.env.SESSION_SECRET_1, process.env.SESSION_SECRET_2],
+    secret: [process.env.BACKEND_SESSION_SECRET_1, process.env.BACKEND_SESSION_SECRET_2],
     store: new MongoStore({ mongooseConnection, stringify: false }),
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000,
