@@ -1,21 +1,31 @@
 const express = require('express')
+const { celebrate, Joi, Segments } = require('celebrate')
+
 const Place = require('../models/place')
 
 const router = express.Router()
 
 // GET total list of places OR query for specific place name
-router.get('/', async (req, res) => {
-  const query = {}
+router.get(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      name: Joi.string(),
+    },
+  }),
+  async (req, res) => {
+    const query = {}
 
-  if (req.query.name) query.name = req.query.name
+    if (req.query.name) query.name = req.query.name
 
-  const places = await Place.find(query)
+    const places = await Place.find(query)
 
-  if (places) res.send(places)
-  else res.sendStatus(404)
-})
+    if (places) res.send(places)
+    else res.sendStatus(404)
+  }
+)
 
-// Initialize DB with some data:
+// An endpoint to create collection with sample data in the DB, for testing purposes
 router.get('/initialize', async (req, res) => {
   const newPlace = await Place.create({ name: 'Berlin', location: { type: 'Point', coordinates: [1, 1] } })
   if (newPlace) res.send(newPlace)
@@ -30,11 +40,24 @@ router.get('/:placeId', async (req, res) => {
 })
 
 // POST new place
-router.post('/', async (req, res) => {
-  const newPlace = await Place.create(req.body)
+router.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      location: Joi.object().required(),
+    },
+  }),
+  async (req, res) => {
+    const newPlace = {
+      name: req.body.name,
+      location: req.body.location,
+    }
+    const createdPlace = await Place.create(newPlace)
 
-  if (newPlace) res.send(newPlace)
-  else res.sendStatus(404)
-})
+    if (createdPlace) res.send(createdPlace)
+    else res.sendStatus(404)
+  }
+)
 
 module.exports = router
