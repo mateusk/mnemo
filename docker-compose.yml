@@ -13,14 +13,13 @@ services:
       - 8080
     volumes:
       - ./frontend/src:/app/src
+    env_file: var.env
   backend:
     image: backend
     build:
       context: backend
       dockerfile: Dockerfile.dev
     env_file: var.env
-    environment:
-      - DB_CONNECTION_STRING=mongodb://mongo:27017/mnemodb
 
     ports:
       - 3000
