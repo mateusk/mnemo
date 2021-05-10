@@ -24,16 +24,28 @@ export default function init(store) {
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "map" */ '../views/map.vue'),
+        beforeEnter(to, from, next) {
+          if (!store.state.user) return next('/login')
+          return next()
+        },
       },
       {
         path: '/feed',
         name: 'feed',
         component: () => import(/* webpackChunkName: "feed" */ '../views/feed.vue'),
+        beforeEnter(to, from, next) {
+          if (!store.state.user) return next('/login')
+          return next()
+        },
       },
       {
         path: '/memories',
         name: 'memories',
         component: () => import(/* webpackChunkName: "memories" */ '../views/memories.vue'),
+        beforeEnter(to, from, next) {
+          if (!store.state.user) return next('/login')
+          return next()
+        },
       },
       {
         path: '/register',
