@@ -1,14 +1,19 @@
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'NavBar',
   data() {
     return {}
   },
+  computed: {
+    ...mapGetters(['user']),
+  },
 }
 </script>
 
 <template lang="pug">
-  #nav
+  #nav(v-if="user !== null")
     ul
       li
         router-link(to="/map") Map
@@ -21,13 +26,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-#logo a {
-  font-size: 20px;
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
-}
-
 #nav {
   position: absolute;
   bottom: 0;
