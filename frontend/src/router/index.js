@@ -4,6 +4,9 @@ import Home from '../views/home.vue'
 import Login from '../views/login.vue'
 import Register from '../views/register.vue'
 import Profile from '../views/profile.vue'
+import Map from '../views/map.vue'
+import Feed from '../views/feed.vue'
+import Memories from '../views/memories.vue'
 
 Vue.use(VueRouter)
 
@@ -20,10 +23,7 @@ export default function init(store) {
       {
         path: '/map',
         name: 'map',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "map" */ '../views/map.vue'),
+        component: Map,
         beforeEnter(to, from, next) {
           if (!store.state.user) return next('/login')
           return next()
@@ -32,7 +32,7 @@ export default function init(store) {
       {
         path: '/feed',
         name: 'feed',
-        component: () => import(/* webpackChunkName: "feed" */ '../views/feed.vue'),
+        component: Feed,
         beforeEnter(to, from, next) {
           if (!store.state.user) return next('/login')
           return next()
@@ -41,7 +41,7 @@ export default function init(store) {
       {
         path: '/memories',
         name: 'memories',
-        component: () => import(/* webpackChunkName: "memories" */ '../views/memories.vue'),
+        component: Memories,
         beforeEnter(to, from, next) {
           if (!store.state.user) return next('/login')
           return next()
