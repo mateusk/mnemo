@@ -13,13 +13,13 @@ services:
       - 8080
     volumes:
       - ./frontend/src:/app/src
-    env_file: var.env
+    env_file: ./frontend/.env.dev
   backend:
     image: backend
     build:
       context: backend
       dockerfile: Dockerfile.dev
-    env_file: var.env
+    env_file: ./backend/.env.dev
 
     ports:
       - 3000
