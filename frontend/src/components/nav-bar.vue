@@ -27,11 +27,9 @@ export default {
 
 <style lang="scss" scoped>
 #nav {
-  position: absolute;
-  bottom: 0;
   display: flex;
   align-items: center;
-  height: 65px;
+  min-height: 65px;
   width: 100%;
   background-color: lightgrey;
 

@@ -33,14 +33,16 @@ export default {
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 
 #view {
   width: 100%;
   overflow: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  height: auto;
+  flex-grow: 1;
 }
 
 #view::-webkit-scrollbar {

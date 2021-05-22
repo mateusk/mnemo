@@ -41,8 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 #topbar {
-  flex-shrink: 0;
-  height: 50px;
+  min-height: 50px;
   padding: 0px 20px 0px 20px;
   background: lightgrey;
   display: flex;

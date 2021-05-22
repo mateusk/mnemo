@@ -28,10 +28,9 @@ export default {
 
 <style lang="scss">
 #map-container {
-  position: fixed;
-  top: 50px;
   width: 100%;
-  height: 75%;
+  z-index: 1;
 }
+
 @import '~mapbox-gl/dist/mapbox-gl.css';
 </style>
