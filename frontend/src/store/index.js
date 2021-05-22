@@ -9,15 +9,20 @@ Vue.use(Vuex)
 
 const mutations = {
   SET_USER: 'set user',
+  TOGGLE_SIDENAV: 'toggle sidenav',
 }
 
 const store = new Vuex.Store({
   state: {
     user: null,
+    sidenav: false,
   },
   mutations: {
     [mutations.SET_USER](state, user) {
       state.user = user
+    },
+    [mutations.TOGGLE_SIDENAV](state) {
+      state.sidenav = !state.sidenav
     },
   },
   actions: {
@@ -48,11 +53,17 @@ const store = new Vuex.Store({
       const memoriesRequest = await axios.get('/api/memories')
       return memoriesRequest.data
     },
+    toggleSidenav({ commit }) {
+      commit(mutations.TOGGLE_SIDENAV)
+    },
   },
   modules: {},
   getters: {
     user: state => {
       return state.user
+    },
+    sidenav: state => {
+      return state.sidenav
     },
   },
 })

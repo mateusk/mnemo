@@ -16,7 +16,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['logout']),
+    ...mapActions(['logout', 'toggleSidenav']),
     async doLogout() {
       await this.logout()
       this.$router.push('/login')
@@ -28,9 +28,8 @@ export default {
 <template lang="pug">
   header(id="topbar" v-if="user !== null")
     #user-login
-      p Hello,
-        router-link(to="/profile") {{ user.username }} &nbsp;
-        a(@click="doLogout" href="#" id="logout") Logout
+      button(@click="toggleSidenav") User
+
   header(id="topbar" v-else)
     #logo
       router-link(to="/") Mnemo
