@@ -16,7 +16,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['logout']),
+    ...mapActions(['logout', 'toggleSidenav']),
     async doLogout() {
       await this.logout()
       this.$router.push('/login')
@@ -26,25 +26,22 @@ export default {
 </script>
 
 <template lang="pug">
-  header(id="topbar")
+  header(id="topbar" v-if="user !== null")
+    #user-login
+      button(@click="toggleSidenav") User
+
+  header(id="topbar" v-else)
     #logo
       router-link(to="/") Mnemo
     #user-login
-      div(v-if="user")
-        p Hello,
-          router-link(to="/profile") {{ user.username }} &nbsp;
-          a(@click="doLogout" href="#" id="logout") Logout
-      div(v-else)
-        p
-          router-link(v-if="isRouteRegister" to="/login") Login
-          router-link(v-if="isRouteLogin" to="/register") Register
-
+      p
+        router-link(v-if="isRouteRegister" to="/login" tag="button") Log in
+        router-link(v-if="isRouteLogin" to="/register" tag="button") Register
 </template>
 
 <style lang="scss" scoped>
 #topbar {
-  flex-shrink: 0;
-  height: 50px;
+  min-height: 50px;
   padding: 0px 20px 0px 20px;
   background: lightgrey;
   display: flex;
