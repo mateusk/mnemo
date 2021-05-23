@@ -1,14 +1,18 @@
 module.exports = {
   root: true,
   env: {
+    browser: true,
     node: true,
   },
-  extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
   parserOptions: {
     parser: 'babel-eslint',
   },
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-  },
+  extends: [
+    '@nuxtjs',
+    'plugin:prettier/recommended',
+    'plugin:nuxt/recommended',
+  ],
+  plugins: [],
+  // add your custom rules here
+  rules: {},
 }

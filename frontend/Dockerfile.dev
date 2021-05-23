@@ -4,10 +4,11 @@ WORKDIR /app
 
 ADD package.json package-lock.json ./
 
+RUN apk add --update python make g++\
+   && rm -rf /var/cache/apk/*
+
 RUN npm install
 
-ADD public ./public
+ADD .babelrc .prettierrc .eslintrc.js stylelint.config.js ./
 
-ADD .browserslistrc .prettierrc .eslintrc.js babel.config.js vue.config.js ./
-
-CMD [ "npm", "run", "serve" ]
+CMD [ "npm", "run", "dev" ]
