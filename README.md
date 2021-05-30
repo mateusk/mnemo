@@ -23,7 +23,7 @@ A web app that connects people, places and memories.
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
   - [Running the app](#running-the-app)
-  - [Running tests](#running-tests)
+  - [Running backend tests](#running-backend-tests)
   - [Contributing](#contributing)
   - [License](#license)
   - [Contact](#contact)
@@ -39,13 +39,11 @@ Mnemo is a web application that allows users to share memories by geotagging the
 
 The app is being designed as mobile-first. Users can check existing memories by consulting their feed, which fetches memories associated with nearby locations. Users can also search for memories by using a map UI and by searching for specific places.
 
-This app is being developed as part of my Software Engineering Course at [Coyotiv - School of Software Engineering](https://www.coyotiv.com/school-of-software-engineering/). It features two main applications: a backend developed with [Node.js](https://nodejs.org/en/), [Mongoose](https://mongoosejs.com), [Express.js](https://expressjs.com)
-and [MongoDB](https://www.mongodb.com); a frontend application made with [Vue.js](https://vuejs.org)
-and [Axios](https://www.npmjs.com/package/axios); development and production environments using [Docker](https://www.docker.com) containers; and automated testing using [Jest](https://jestjs.io).
+Developed as part of my Software Engineering Course at [Coyotiv - School of Software Engineering](https://www.coyotiv.com/school-of-software-engineering/), this application is split into two main applications: a backend developed with [Node.js](https://nodejs.org/en/), [Mongoose](https://mongoosejs.com) and [MongoDB](https://www.mongodb.com), with an API developed using [Express.js](https://expressjs.com); and a frontend application made with [Vue.js](https://vuejs.org), [Nuxt](https://nuxtjs.org) and [Axios](https://www.npmjs.com/package/axios). The app stack also includes development and production environments using [Docker](https://www.docker.com) containers, integrated into CI/CD pipeline and deployed in Google Cloud. Automated testing uses [Jest](https://jestjs.io). Load balancing is managed using [Traefik](https://doc.traefik.io/traefik/).
 
 ### Wireframes
 
-You can check the in-development app wireframes [here](https://mateusk.github.io/mnemo-wireframe/).
+You can check the in-development frontend app wireframes [here](https://mateusk.github.io/mnemo-wireframe/).
 
 ### Built With
 
@@ -56,7 +54,9 @@ You can check the in-development app wireframes [here](https://mateusk.github.io
 - [Jest](https://jestjs.io)
 - [Docker](https://www.docker.com)
 - [Vue.js](https://vuejs.org)
+- [Nuxt.js](https://nuxtjs.org)
 - [Axios](https://www.npmjs.com/package/axios)
+- [Traefik](https://doc.traefik.io/traefik/)
 
 <!-- GETTING STARTED -->
 
@@ -102,10 +102,10 @@ To get a local copy up and running follow these simple steps.
 
 ## Running the app
 
-1. Start the development environment in terminal by running:
+1. Start the local development environment in terminal by running:
 
    ```sh
-   docker-compose up
+   docker compose -f docker-compose.yml -f docker-compose.debug.yml up
    ```
 
 2. To add some dummy data to the app database, go to the following URLs using your browser:
@@ -114,17 +114,17 @@ To get a local copy up and running follow these simple steps.
    - http://mnemo.localhost/api/memories/initialize
    - http://mnemo.localhost/api/places/initialize
 
-3. The app should be running at: http://mnemo.localhost/. At the moment the fronted app is really simple, only displaying data fetched using the REST API from the backend.
+3. The app should be running at: http://mnemo.localhost/. As this project is under development, frontend and backend apps are still really simple and missing a lot of functionality and integration, but they are being constantly improved.
 
-## Running tests
+## Running backend tests
 
-While the app is running (using the `docker-compose up` command), automated tests can be run in a second terminal instance by executing the following from the project root:
+While the app is running (using the `docker compose up` command as mentioned above), automated tests can be run in the backend app in a second terminal instance by executing the following from the project root:
 
 ```sh
-docker-compose run --rm backend npm run test
+docker compose run --rm backend npm run test
 ```
 
-At the moment, only three backend endpoint tests are implemented (for `/api/users`, `/api/places` and `/api/memories` endpoints).
+At the moment, only three backend API endpoint tests are implemented (for `/api/users`, `/api/places` and `/api/memories` endpoints).
 
 <!-- ROADMAP -->
 

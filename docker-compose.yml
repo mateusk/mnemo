@@ -12,7 +12,15 @@ services:
     ports:
       - 8080
     volumes:
-      - ./frontend/src:/app/src
+      - ./frontend/assets:/app/assets
+      - ./frontend/components:/app/components
+      - ./frontend/layouts:/app/layouts
+      - ./frontend/middleware:/app/middleware
+      - ./frontend/pages:/app/pages
+      - ./frontend/plugins:/app/plugins
+      - ./frontend/static:/app/static
+      - ./frontend/store:/app/store
+      - ./frontend/nuxt.config.js:/app/nuxt.config.js
     env_file: ./frontend/.env.dev
   backend:
     image: backend
