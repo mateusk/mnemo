@@ -1,11 +1,10 @@
-FROM node:alpine
+FROM node:14-alpine
 
 WORKDIR /app
 
 ADD package.json package-lock.json ./
 
-RUN apk add --update python make g++\
-   && rm -rf /var/cache/apk/*
+RUN apk add --update --no-cache python3 py3-pip make g++ && rm -rf /var/cache/apk/*
 
 RUN npm install
 
