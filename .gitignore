@@ -107,3 +107,4 @@ dist
 backend/run-commands.md
 frontend/.env.dev
 backend/.env.dev
+frontend/static/sw.js
